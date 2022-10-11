@@ -1,5 +1,7 @@
 # DOGGY-PEDIA
 
+[![.github/workflows/pipeline.yaml](https://github.com/Jau2002/doggy-pedia/actions/workflows/pipeline.yaml/badge.svg)](https://github.com/Jau2002/doggy-pedia/actions/workflows/pipeline.yaml)
+
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 # Individual Project - Henry Dogs

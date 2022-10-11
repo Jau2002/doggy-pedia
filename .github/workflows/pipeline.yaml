@@ -1,5 +1,9 @@
 name: Deployment PipeLine
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   push:
     branches:
@@ -60,7 +64,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Perf format
-        uses: pnpm run format
+        run: pnpm run format
 
   lint:
     needs: [setup, format]
@@ -101,7 +105,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Lint Perse
-        uses: pnpm run lint
+        run: pnpm run lint
 
   mocha:
     needs: [Lint]
@@ -142,7 +146,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Testing back-end
-        uses: pnpm run test -r
+        run: pnpm -F api test
 
   vitest:
     needs: [Lint]
@@ -183,4 +187,98 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Testing front-end
-        uses: pnpm run spec -r
+        run: pnpm -F client spec
+
+  railway:
+    needs: [mocha, vitest]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Add Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/gallium'
+          cache: 'pnpm'
+          cache-dependency-path: '/pnpm-lock.yaml'
+
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.9.0
+          run_install: false
+
+      - name: Get Pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup Pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Railway
+        run: npm install -g @railway/cli
+
+      - name: Deploy
+        if: ${{ github.event_name == 'push' }}
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+  vercel:
+    needs: [railway]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Add Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/gallium'
+          cache: 'pnpm'
+          cache-dependency-path: '/pnpm-lock.yaml'
+
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.9.0
+          run_install: false
+
+      - name: Get Pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup Pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

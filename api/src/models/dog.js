@@ -9,8 +9,12 @@ const Dog = sequelize.define(
 			allowNull: false,
 		},
 	},
-	{ freezeTableName: true, timestamps: false }
+	{
+		freezeTableName: true,
+		timestamps: false,
+		underscored: true,
+		paranoid: true,
+	}
 );
-console.log('aaa');
 
 export default Dog;

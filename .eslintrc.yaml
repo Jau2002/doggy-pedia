@@ -13,10 +13,7 @@ parserOptions:
 plugins:
   - react
 rules:
-  indent:
-    - 2
-    - tab
-    - ignoredNodes: [ConditionalExpression]
+  indent: 0
   curly:
     - 2
     - all
