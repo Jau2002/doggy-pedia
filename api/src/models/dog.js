@@ -49,11 +49,7 @@ const dog = sequelize.define(
 			defaultValue: true,
 		},
 	},
-	{
-		freezeTableName: true,
-		timestamps: false,
-		underscored: true,
-	}
+	{ freezeTableName: true, timestamps: false, underscored: true }
 );
 
 export default dog;

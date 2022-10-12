@@ -101,7 +101,7 @@ A continuación se detallaran los requerimientos mínimos para la ión del proye
 - [ ] React
 - [ ] Redux
 - [ ] Express
-- [ ] Sequelize - Postgres
+- [x] Sequelize - Postgres
 
 ## Frontend
 
@@ -153,13 +153,13 @@ Se debe desarrollar una aplicación de React/Redux que contenga las ientes panta
 
 El modelo de la base de datos deberá tener las siguientes entidades (uellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Raza con las siguientes propiedades:
+- [x] Raza con las siguientes propiedades:
   - ID \*
   - Nombre \*
   - Altura \*
   - Peso \*
   - Años de vida
-- [ ] Temperamento con las siguientes propiedades:
+- [x] Temperamento con las siguientes propiedades:
   - ID
   - Nombre
 

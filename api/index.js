@@ -23,11 +23,12 @@
 import sequelize from './src/config/db.config.js';
 import server from './src/middlewares/app.js';
 import './src/models/dog.js';
+import './src/models/temperament.js';
 
 console.clear();
 
 async function connection() {
-	const reload = await sequelize.sync({ force: false });
+	const reload = await sequelize.sync({ force: true });
 	return reload;
 }
 
