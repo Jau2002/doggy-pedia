@@ -39,7 +39,6 @@ jobs:
         with:
           node-version: 'lts/gallium'
           cache: 'pnpm'
-          cache-dependency-path: '/pnpm-lock.yaml'
 
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
@@ -80,7 +79,6 @@ jobs:
         with:
           node-version: 'lts/gallium'
           cache: 'pnpm'
-          cache-dependency-path: '/pnpm-lock.yaml'
 
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
@@ -121,7 +119,6 @@ jobs:
         with:
           node-version: 'lts/gallium'
           cache: 'pnpm'
-          cache-dependency-path: '/pnpm-lock.yaml'
 
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
@@ -162,7 +159,6 @@ jobs:
         with:
           node-version: 'lts/gallium'
           cache: 'pnpm'
-          cache-dependency-path: '/pnpm-lock.yaml'
 
       - name: Setup Pnpm
         uses: pnpm/action-setup@v2.2.2
@@ -190,42 +186,13 @@ jobs:
         run: pnpm -F client spec
 
   railway:
-    needs: [mocha, vitest]
+    needs: [mocha]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Add Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/gallium'
-          cache: 'pnpm'
-          cache-dependency-path: '/pnpm-lock.yaml'
-
-      - name: Setup Pnpm
-        uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.9.0
-          run_install: false
-
-      - name: Get Pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - name: Setup Pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
 
       - name: Install Railway
         run: npm install -g @railway/cli
@@ -237,39 +204,13 @@ jobs:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
   vercel:
-    needs: [railway]
+    needs: [vitest, railway]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Add Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/gallium'
-          cache: 'pnpm'
-          cache-dependency-path: '/pnpm-lock.yaml'
-
-      - name: Setup Pnpm
-        uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.9.0
-          run_install: false
-
-      - name: Get Pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - name: Setup Pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest

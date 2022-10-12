@@ -1,0 +1,7 @@
+@API_REST_CLIENT=https://api.thedogapi.com/v1/breeds
+
+### Solicit call all dogs
+GET {{API_REST_CLIENT}}/ HTTP/1.1
+
+### Query fetch first petition
+GET {{API_REST_CLIENT}}/search?q=Affenpinscher HTTP/1.1
