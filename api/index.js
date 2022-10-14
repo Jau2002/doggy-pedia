@@ -22,8 +22,7 @@
 
 import sequelize from './src/config/db.config.js';
 import server from './src/middlewares/app.js';
-import './src/models/dog.js';
-import './src/models/temperament.js';
+import './src/models/dog_temperament.js';
 
 console.clear();
 
