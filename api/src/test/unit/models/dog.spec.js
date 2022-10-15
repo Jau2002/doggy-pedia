@@ -79,10 +79,6 @@ describe('dog model', () => {
 					.to.have.ownPropertyDescriptor('dataValues')
 					.to.have.nested.property('value.lowest_weight')
 					.to.not.be.a('null');
-				expect(model)
-					.to.have.ownPropertyDescriptor('dataValues')
-					.to.have.nested.property('value.highest_weight')
-					.to.not.be.a('null');
 			});
 
 			it('should the WEIGHT be of type number', () => {
@@ -120,10 +116,6 @@ describe('dog model', () => {
 					.to.have.ownPropertyDescriptor('dataValues')
 					.to.have.nested.property('value.lowest_height')
 					.to.not.be.a('null');
-				expect(model)
-					.to.have.ownPropertyDescriptor('dataValues')
-					.to.have.nested.property('value.highest_height')
-					.to.not.be.a('null');
 			});
 
 			it('should the HEIGHT be of type number', () => {
@@ -160,10 +152,6 @@ describe('dog model', () => {
 				expect(model)
 					.to.have.ownPropertyDescriptor('dataValues')
 					.to.have.nested.property('value.lowest_life_span')
-					.to.not.be.a('null');
-				expect(model)
-					.to.have.ownPropertyDescriptor('dataValues')
-					.to.have.nested.property('value.highest_life_span')
 					.to.not.be.a('null');
 			});
 

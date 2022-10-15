@@ -14,7 +14,7 @@ describe('temperament model', () => {
 
 		beforeEach(async () => {
 			model = await temperament.create({
-				name: ['Watchful', 'Wild', 'Willful'],
+				name: 'Watchful',
 			});
 		});
 
@@ -46,11 +46,11 @@ describe('temperament model', () => {
 					.to.not.be.a('null');
 			});
 
-			it('should the ID be of type array', () => {
+			it('should the ID be of type "string"', () => {
 				expect(model)
 					.to.have.ownPropertyDescriptor('dataValues')
 					.to.have.nested.property('value.name')
-					.to.be.an('array');
+					.to.be.a('string');
 			});
 		});
 	});

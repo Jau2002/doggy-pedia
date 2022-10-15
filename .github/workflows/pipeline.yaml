@@ -139,7 +139,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Testing back-end
+      - name: pre-test
+        run: pnpm -F api start
+
+      - name: Testing in back-end
         run: pnpm -F api test
 
   vitest:
@@ -178,7 +181,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Testing front-end
+      - name: Testing in front-end
         run: pnpm -F client spec
 
   railway:

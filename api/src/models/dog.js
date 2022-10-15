@@ -6,13 +6,13 @@ const dog = sequelize.define(
 	{
 		id: {
 			type: DataTypes.UUID,
-			allowNull: false,
 			defaultValue: DataTypes.UUIDV4,
 			primaryKey: true,
 		},
 		name: {
 			type: DataTypes.STRING(128),
 			allowNull: false,
+			unique: true,
 		},
 		lowest_height: {
 			type: DataTypes.SMALLINT,
@@ -20,7 +20,6 @@ const dog = sequelize.define(
 		},
 		highest_height: {
 			type: DataTypes.SMALLINT,
-			allowNull: false,
 		},
 		lowest_weight: {
 			type: DataTypes.SMALLINT,
@@ -28,7 +27,6 @@ const dog = sequelize.define(
 		},
 		highest_weight: {
 			type: DataTypes.SMALLINT,
-			allowNull: false,
 		},
 		lowest_life_span: {
 			type: DataTypes.SMALLINT,
@@ -36,16 +34,13 @@ const dog = sequelize.define(
 		},
 		highest_life_span: {
 			type: DataTypes.SMALLINT,
-			allowNull: false,
 		},
 		image: {
-			type: DataTypes.CHAR(255),
-			allowNull: false,
+			type: DataTypes.TEXT,
 			defaultValue: 'https://svgsilh.com/svg/1185460.svg',
 		},
 		created_in_db: {
 			type: DataTypes.BOOLEAN,
-			allowNull: false,
 			defaultValue: true,
 		},
 	},

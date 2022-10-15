@@ -4,7 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"spec": "vitest",
+		"spec": "vitest \"**/spec/**/*.test.js\"",
 		"build": "vite build",
 		"preview": "vite preview"
 	},
