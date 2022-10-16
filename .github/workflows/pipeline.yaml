@@ -141,6 +141,11 @@ jobs:
 
       - name: pre-test
         run: pnpm -F api start
+        env:
+          DB_USER: ${{secrets.DB_USER}}
+          DB_HOST: ${{secrets.DB_HOST}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          DB_PASSWORD: ${{secrets.DB_PASSWORD}}
 
       - name: Testing in back-end
         run: pnpm -F api test

@@ -3,6 +3,6 @@ import dogsRoutes from './dogs.routes.js';
 
 const router = Router();
 
-router.use('dogs', dogsRoutes);
+router.use('/dogs', dogsRoutes);
 
 export default router;

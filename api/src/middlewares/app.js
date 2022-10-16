@@ -1,7 +1,7 @@
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import morgan from 'morgan';
-import routes from '../routes/dogs.routes.js';
+import rootRoute from '../routes/index.routes.js';
 
 const server = express();
 
@@ -20,12 +20,11 @@ server.use((_, res, next) => {
 	next();
 });
 
-server.use('/', routes);
+server.use('/', rootRoute);
 
 server.use((err, _, res, next) => {
 	const status = err.status || 500;
 	const message = err.message || err;
-	console.error(err);
 	res.status(status).send(message);
 	next();
 });

@@ -173,10 +173,10 @@ Se debe desarrollar un servidor en Node/Express con las siguientes s:
 
 **IMPORTANTE**: No está permitido utilizar los filtrados, y paginados brindados por la API externa, todas estas tienen que implementarlas ustedes.
 
-- [ ] **GET /dogs**:
+- [x] **GET /dogs**:
   - Obtener un listado de las razas de perro
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] **GET /dogs?name="..."**:
+- [x] **GET /dogs?name="..."**:
   - Obtener un listado de las razas de perro que contengan la palabra ngresada como query parameter
   - Si no existe ninguna raza de perro mostrar un mensaje adecuado
 - [ ] **GET /dogs/{idRaza}**:
