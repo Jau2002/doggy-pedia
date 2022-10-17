@@ -1,0 +1,66 @@
+# Varables
+@PORT=3001
+
+@HOST=http://localhost
+
+@URL={{HOST}}:{{PORT}}
+
+# Dog
+
+### Read request all dogs
+GET {{URL}}/dogs HTTP/1.1
+
+### Read name filter by query
+GET {{URL}}/dogs?name=Affenpinscher HTTP/1.1
+
+### Read filter petition for id
+GET {{URL}}/dogs/2 HTTP/1.1
+
+### Create new dog
+POST {{URL}}/dogs HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Doberman Terrier",
+  "lowest_height": 53,
+  "highest_height": 58,
+  "lowest_weight": 58,
+  "highest_weight": 18,
+  "highest_weight": 29,
+  "lowest_life_span": 29,
+  "highest_life_span": 13,
+  "temperament": [
+   "Outgoing",
+    "Friendly",
+    "Alert",
+    "Confident",
+    "Intelligent",
+    "Courageous"
+  ]
+}
+
+# Error
+
+### Route error
+GET {{URL}}/lorem HTTP/1.1
+
+### Search error in the query
+GET {{URL}}/dogs?name=lorem HTTP/1.1
+
+### Filter error by id
+GET {{URL}}/dogs/666 HTTP/1.1
+
+### Error creating
+POST {{URL}}/dogs HTTP/1.1
+Content-Type: application/json
+
+{
+  "lowest_height": 53,
+  "highest_height": 58,
+  "highest_weight": 29,
+  "temperament": [
+    "Alert",
+    "Intelligent",
+    "Courageous"
+  ]
+}

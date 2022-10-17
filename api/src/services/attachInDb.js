@@ -17,7 +17,7 @@ const attachInDb = async () => {
 		highest_life_span: a?.highest_life_span,
 		image: a.image,
 		created_in_db: a.created_in_db,
-		temperament: a.map((t) => t.name),
+		temperament: a?.map((t) => t.name),
 	}));
 
 	return insertValuesDb;

@@ -13,7 +13,7 @@ const getByQuery = async (req, res) => {
 			return filterForName.length
 				? res.status(OK).json(filterForName)
 				: res.status(CONFLICT).json({
-						message: `There is ${name} no exist`,
+						message: `the ${name} breed does not exist`,
 				  });
 		}
 		return res.status(OK).json(dog);

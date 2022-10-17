@@ -50,6 +50,7 @@ rules:
     - avoidEscape: true
       allowTemplateLiterals: false
   no-restricted-syntax: 0
+  camelcase: 0
   import/no-unresolved: 0
   import/extensions: 0
   import/no-extraneous-dependencies: 0

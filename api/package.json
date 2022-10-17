@@ -3,8 +3,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"start": "node \"index.js\"",
-		"serve": "nodemon -L \"index.js\" --ignore \"test/\"",
+		"start": "cross-env NODE_ENV=production node \"index.js\"",
+		"serve": "cross-env NODE_ENV=development nodemon -L \"index.js\" --ignore \"test/\"",
 		"test": "mocha \"**/test/**/*.spec.js\""
 	},
 	"dependencies": {
@@ -17,6 +17,7 @@
 	},
 	"devDependencies": {
 		"chai": "4.3.6",
+		"cross-env": "7.0.3",
 		"mocha": "10.0.0",
 		"morgan": "1.10.0",
 		"nodemon": "2.0.19",

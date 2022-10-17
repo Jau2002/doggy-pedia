@@ -100,7 +100,7 @@ A continuación se detallaran los requerimientos mínimos para la ión del proye
 
 - [ ] React
 - [ ] Redux
-- [ ] Express
+- [x] Express
 - [x] Sequelize - Postgres
 
 ## Frontend
@@ -179,11 +179,11 @@ Se debe desarrollar un servidor en Node/Express con las siguientes s:
 - [x] **GET /dogs?name="..."**:
   - Obtener un listado de las razas de perro que contengan la palabra ngresada como query parameter
   - Si no existe ninguna raza de perro mostrar un mensaje adecuado
-- [ ] **GET /dogs/{idRaza}**:
+- [x] **GET /dogs/{idRaza}**:
   - Obtener el detalle de una raza de perro en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de raza perro
   - Incluir los temperamentos asociados
-- [ ] **POST /dogs**:
+- [x] **POST /dogs**:
   - Recibe los datos recolectados desde el formulario controlado de ruta de creación de raza de perro por body
   - Crea una raza de perro en la base de datos relacionada con sus eramentos
 - [ ] **GET /temperaments**:
