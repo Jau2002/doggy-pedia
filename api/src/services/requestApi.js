@@ -21,7 +21,7 @@ const requestApi = async () => {
 			? Number(d.life_span.slice(4, 7))
 			: undefined,
 		image: d.image.url,
-		temperament: d.temperament?.replace(/,/g, '').split(' '),
+		temperament: d?.temperament?.replace(/,/g, '').split(' '),
 	}));
 
 	return response;

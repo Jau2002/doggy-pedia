@@ -140,7 +140,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: pre-test
-        run: pnpm -F api serve
+        run: pnpm -F api pre-test
         env:
           DB_USER: ${{secrets.DB_USER}}
           DB_HOST: ${{secrets.DB_HOST}}

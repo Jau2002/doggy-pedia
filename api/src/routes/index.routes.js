@@ -1,8 +1,14 @@
 import { Router } from 'express';
 import dogsRoutes from './dogs.routes.js';
+import monitoredRoutes from './monitored.routes.js';
+import temperamentsRoutes from './temperaments.routes.js';
 
-const router = Router();
+const RootRoute = Router();
 
-router.use('/dogs', dogsRoutes);
+RootRoute.use('/dogs', dogsRoutes);
 
-export default router;
+RootRoute.use('/temperaments', temperamentsRoutes);
+
+RootRoute.use('/health', monitoredRoutes);
+
+export default RootRoute;

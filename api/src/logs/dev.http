@@ -1,9 +1,15 @@
 # Varables
+
 @PORT=3001
 
 @HOST=http://localhost
 
 @URL={{HOST}}:{{PORT}}
+
+# Health
+
+### health pointer
+GET {{URL}}/health HTTP/1.1
 
 # Dog
 
@@ -39,10 +45,12 @@ Content-Type: application/json
   ]
 }
 
-# Error
+# Temperament
 
-### Route error
-GET {{URL}}/lorem HTTP/1.1
+### request all tempreraments
+GET {{URL}}/temperaments HTTP/1.1
+
+# Error
 
 ### Search error in the query
 GET {{URL}}/dogs?name=lorem HTTP/1.1
