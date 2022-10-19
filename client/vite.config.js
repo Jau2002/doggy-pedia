@@ -14,6 +14,7 @@ export default () => {
 	};
 
 	return defineConfig({
+		base: '/',
 		plugins: [react()],
 		server,
 		test,
