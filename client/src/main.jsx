@@ -20,7 +20,9 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import Home from './routes/Home';
 import Landing from './routes/Landing';
+import NotFound from './routes/NotFound';
 import store from './store';
 
 axios.defaults.baseURL =
@@ -30,6 +32,12 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Landing />,
+		index: true,
+		errorElement: <NotFound />,
+	},
+	{
+		path: '/home',
+		element: <Home />,
 	},
 ]);
 

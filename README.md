@@ -109,13 +109,13 @@ Se debe desarrollar una aplicación de React/Redux que contenga las ientes panta
 
 **Pagina inicial**: deben armar una landing page con
 
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+- [x] Alguna imagen de fondo representativa al proyecto
+- [x] Botón para ingresar al home (`Ruta principal`)
 
 **Ruta principal**: debe contener
 
-- [ ] Input de búsqueda para encontrar razas de perros por nombre
-- [ ] Área donde se verá el listado de razas de perros. Deberá su:
+- [x] Input de búsqueda para encontrar razas de perros por nombre
+- [x] Área donde se verá el listado de razas de perros. Deberá su:
   - Imagen
   - Nombre
   - Temperamento

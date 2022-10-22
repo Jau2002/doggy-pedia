@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
+const bg = ({ background }) =>
+	`../../public/images/${background || 'gb-pages.jpg'}`;
+
 const Background = styled.main`
-  Background: url('../../public/images/bg-landing-page.jpg')
-  no-repeat center scroll;
+  Background: url(${bg}) no-repeat center scroll;
   background-size: cover;
-  background-attachment: fixed;
   height: 100vh;
 `;
 

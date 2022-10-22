@@ -36,6 +36,7 @@ rules:
       ignoreUrls: true
       ignoreRegExpLiterals: true
       ignoreStrings: true
+      ignoreTemplateLiterals: true
   no-confusing-arrow:
     - 2
     - allowParens: true
@@ -51,9 +52,11 @@ rules:
       allowTemplateLiterals: false
   no-restricted-syntax: 0
   camelcase: 0
+  default-param-last: 0
   import/no-unresolved: 0
   import/extensions: 0
   import/no-extraneous-dependencies: 0
+  react/no-array-index-key: 0
   react/prop-types: 0
   react/react-in-jsx-scope: 0
   react/jsx-filename-extension:

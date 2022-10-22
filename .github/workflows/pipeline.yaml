@@ -190,6 +190,7 @@ jobs:
   #       run: pnpm -F client spec
 
   railway:
+    needs: [lint]
     # needs: [mocha]
     runs-on: ubuntu-22.04
     steps:
@@ -209,6 +210,7 @@ jobs:
 
   vercel:
     # needs: [vitest, railway]
+    needs: [railway]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code repository
