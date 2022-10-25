@@ -30,13 +30,7 @@ rules:
       allowObjectEnd: true
       allowArrayStart: true
       allowArrayEnd: true
-  max-len:
-    - 2
-    - code: 80
-      ignoreUrls: true
-      ignoreRegExpLiterals: true
-      ignoreStrings: true
-      ignoreTemplateLiterals: true
+  max-len: 0
   no-confusing-arrow:
     - 2
     - allowParens: true
@@ -53,6 +47,7 @@ rules:
   no-restricted-syntax: 0
   camelcase: 0
   default-param-last: 0
+  no-param-reassign: 0
   import/no-unresolved: 0
   import/extensions: 0
   import/no-extraneous-dependencies: 0

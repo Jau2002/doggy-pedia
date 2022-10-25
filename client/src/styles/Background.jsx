@@ -4,7 +4,7 @@ const bg = ({ background }) =>
 	`../../public/images/${background || 'gb-pages.jpg'}`;
 
 const Background = styled.main`
-  Background: url(${bg}) no-repeat center scroll;
+  Background: url(${bg}) no-repeat center fixed;
   background-size: cover;
   height: 100vh;
 `;

@@ -9,6 +9,7 @@ const Icon = styled.menu`
   width: 60px;
   z-index: 1;
   opacity: 0.5;
+  margin: 0 0.3em;
 
   &:hover {
     opacity: 1;

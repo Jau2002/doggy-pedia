@@ -19,6 +19,7 @@ const attachInDb = async () => {
 		created_in_db: a.created_in_db,
 		temperament: a?.map((t) => t.name),
 	}));
+	console.log(insertValuesDb);
 
 	return insertValuesDb;
 };

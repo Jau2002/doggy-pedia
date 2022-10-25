@@ -20,6 +20,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import Create from './routes/Create';
 import Home from './routes/Home';
 import Landing from './routes/Landing';
 import NotFound from './routes/NotFound';
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
 	{
 		path: '/home',
 		element: <Home />,
+	},
+	{
+		path: '/dog',
+		element: <Create />,
 	},
 ]);
 

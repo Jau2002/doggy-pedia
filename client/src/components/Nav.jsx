@@ -1,37 +1,50 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useLocations from '../hooks/useLocations';
 import Icon from '../styles/Icon';
 import { NavBar, NavContainer, Title } from '../styles/modules/Nav';
 import Search from './Search';
 
 function Nav() {
-	const { socialNetworks, navigation } = useLocations();
+	const { socialNetworks, navigation, img, url } = useLocations();
+	const { pathname } = useLocation();
 	return (
-		<NavBar>
+		<NavBar width={pathname !== '/home' && '0.5em'}>
 			<NavContainer>
-				{navigation.map(({ path, icon }, index) => (
-					<Link
-						to={path}
-						key={index}
-					>
-						<Icon name={icon} />
+				{pathname === '/home' ? (
+					navigation.map(({ path, icon }, index) => (
+						<Link
+							to={path}
+							key={index}
+						>
+							<Icon name={icon} />
+						</Link>
+					))
+				) : (
+					<Link to={url}>
+						<Icon name={img} />
 					</Link>
-				))}
+				)}
 			</NavContainer>
-			<Title>Home</Title>
+			{pathname !== '/home' ? (
+				<Link to='/home'>
+					<Title>Dog</Title>
+				</Link>
+			) : (
+				<Title>Home</Title>
+			)}
 			<NavContainer>
-				{socialNetworks.map(({ anchor, icon }, index) => (
+				{socialNetworks.map(({ anchor, image }, index) => (
 					<a
 						href={anchor}
 						target='_blank'
 						rel='noreferrer'
 						key={index}
 					>
-						<Icon name={icon} />
+						<Icon name={image} />
 					</a>
 				))}
 			</NavContainer>
-			<Search />
+			{pathname === '/home' && <Search />}
 		</NavBar>
 	);
 }

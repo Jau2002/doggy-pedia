@@ -1,16 +1,18 @@
 import Dog from '../components/Dog';
 import Nav from '../components/Nav';
+import Paging from '../components/Paging';
 import useMemory from '../hooks/useMemory';
+import Background from '../styles/Background';
 import Loader from '../styles/Loader';
 
 function Home() {
-	const { dogs } = useMemory();
+	const { handleOnClick, totalRecords } = useMemory();
 	return (
-		<main>
+		<Background>
 			<Nav />
 			<section>
-				{dogs.length ? (
-					dogs.map((d) => (
+				{totalRecords.length ? (
+					totalRecords.map((d) => (
 						<Dog
 							key={d.id}
 							name={d.name}
@@ -24,7 +26,8 @@ function Home() {
 					<Loader />
 				)}
 			</section>
-		</main>
+			<Paging handleOnClick={handleOnClick} />
+		</Background>
 	);
 }
 

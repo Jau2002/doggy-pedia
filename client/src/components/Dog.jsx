@@ -1,6 +1,8 @@
+import { Card } from '../styles/modules/Dog';
+
 function Dog({ name, image, lowest_weight, highest_weight, temperament }) {
 	return (
-		<section>
+		<Card>
 			<div>
 				<figure>
 					<img
@@ -17,7 +19,7 @@ function Dog({ name, image, lowest_weight, highest_weight, temperament }) {
 					))}
 				</div>
 			</div>
-		</section>
+		</Card>
 	);
 }
 

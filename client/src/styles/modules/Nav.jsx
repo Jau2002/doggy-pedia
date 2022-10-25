@@ -8,6 +8,7 @@ export const NavBar = styled.nav`
   Background: #23395d;
   width: 100%;
   align-items: center;
+  padding: ${({ width }) => `${width || 0}`};
 `;
 
 export const NavContainer = styled.div`
